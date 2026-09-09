@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sems Inc. | Innovative Software Solutions</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Root Variables for Dark Theme (Default) */
+        :root {
+            --bg-color: #0f1115;
+            --card-bg: #181b22;
+            --header-bg: #161920;
+            --text-color: #e0e0e0;
+            --text-muted: #a0a5b5;
+            --text-title: #ffffff;
+            --border-color: #282c37;
+            --accent-color: #e63946;
+            --accent-hover: #c92a37;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Light Theme Overrides */
+        [data-theme="light"] {
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --header-bg: #ffffff;
+            --text-color: #333333;
+            --text-muted: #555555;
+            --text-title: #111111;
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Header Container */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            max-height: 45px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Navigation Links */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mode Switcher Button Container */
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .hero {
+            padding: 80px 5% 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--header-bg) 0%, var(--bg-color) 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--text-title);
+            margin-bottom: 15px;
+        }
+
+        .hero span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            scroll-margin-top: 80px; 
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 35px;
+            color: var(--text-title);
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px 20px;
+            max-width: 420px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px var(--shadow-color);
+            background-color: var(--bg-color);
+        }
+
+        .profile-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        /* Interactive Profile Link with Icon Indicator */
+        .profile-link {
+            color: var(--text-title);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px dashed var(--accent-color);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .profile-link i {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-link:hover {
+            color: var(--accent-color);
+        }
+
+        .profile-link:hover i {
+            transform: translate(2px, -2px);
+        }
+
+        .profile-card .designation {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            margin-top: 6px;
+        }
+
+        .profile-card .company {
+            color: var(--text-title);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .profile-card .education-title {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+
+        .profile-card .institution {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--text-title);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .contact-item i {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-item a, .contact-item p {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            word-break: break-word;
+        }
+
+        .contact-item a:hover {
+            color: var(--text-title);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: var(--header-bg);
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Fully Responsive Layout Rules */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                row-gap: 12px;
+                padding: 0.8rem 4%;
+            }
+
+            .logo img {
+                width: 130px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                border-top: 1px solid var(--border-color);
+                padding-top: 10px;
+            }
+
+            nav ul {
+                gap: 15px;
+                width: 100%;
+                justify-content: space-evenly;
+            }
+
+            nav a {
+                font-size: 0.88rem;
+            }
+
+            .hero {
+                padding: 50px 4% 40px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.98rem;
+            }
+
+            .section {
+                padding: 40px 4%;
+                scroll-margin-top: 115px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <!-- Dynamic Logo -->
+            <img id="siteLogo" src="darklogo.png" alt="Sems Inc. Logo">
+        </a>
+        
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#products">Software & Apps</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="theme-toggle-btn" id="themeToggle" title="Toggle Theme">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Building Next-Gen <span>Software</span> Solutions</h1>
+        <p>At Sems Inc., we design and develop powerful mobile applications and software to simplify your digital experience.</p>
+        <a href="#products" class="btn">Explore Our Products</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Us</h2>
+        <div class="profile-card">
+            <img src="shoeb.jpeg" alt="Shoeb Khandaker" class="profile-img">
+            <h3>
+                <a href="https://shoeb-khandaker.github.io/web/" target="_blank" class="profile-link" title="Visit Personal Website">
+                    Shoeb Khandaker <i class="fas fa-external-link-alt"></i>
+                </a>
+            </h3>
+            <p class="designation">CEO & Founder</p>
+            <p class="company">Sems Inc.</p>
+            <p class="education-title">CST Student</p>
+            <p class="institution">Ahsanullah Institute Of Technology</p>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <h2 class="section-title">Our Applications</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Calculator App</h3>
+                <p>A smart, fast, and user-friendly calculator tool built for everyday calculations and smooth performance.</p>
+            </div>
+            <div class="card">
+                <h3>Run Dino</h3>
+                <p>An engaging and addictive arcade runner game designed for quick entertainment and lightweight gameplay.</p>
+            </div>
+            <div class="card">
+                <h3>Custom Software</h3>
+                <p>Tailor-made web and mobile software solutions built with modern technology stacks.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Get in Touch</h2>
+        
+        <div class="contact-container">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:support.semsinc@gmail.com">support.semsinc@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+8809638854844">+880 9638-854844</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Munshiganj, Dhaka, Bangladesh</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/SemsInc.bd" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://github.com/sems-inc" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://wa.me/message/WWIGUV52H2QCH1" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/sems.inc.bd" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sems Inc. All rights reserved.</p>
+    </footer>
+
+    <!-- Theme and Logo Switcher Script -->
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        const siteLogo = document.getElementById('siteLogo');
+        const currentTheme = localStorage.getItem('theme');
+
+        function updateThemeUI(isLight) {
+            if (isLight) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+                siteLogo.src = 'logo.png'; // Light Mode Logo
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                siteLogo.src = 'darklogo.png'; // Dark Mode Logo
+            }
+        }
+
+        // Initialize Theme on Page Load
+        if (currentTheme === 'light') {
+            updateThemeUI(true);
+        } else {
+            updateThemeUI(false);
+        }
+
+        // Toggle Switch Event
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'light') {
+                localStorage.setItem('theme', 'dark');
+                updateThemeUI(false);
+            } else {
+                localStorage.setItem('theme', 'light');
+                updateThemeUI(true);
+            }
+        });
+    </script>
+</body>
+</html>
