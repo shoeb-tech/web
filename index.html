@@ -1,1716 +1,1316 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Shoeb Technologies - Building the Future with Technology</title>
-
-    <meta name="description"
-        content="Shoeb Technologies builds modern websites, Android applications and games with technology and creativity.">
-
-    <meta name="author" content="Shoeb Technologies">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <style>
-
-        /* =========================
-           ROOT
-        ========================== */
-
-        :root {
-            --bg: #f7f8fc;
-            --surface: #ffffff;
-            --surface-2: #f0f2f7;
-
-            --text: #15171c;
-            --muted: #686d78;
-
-            --primary: #6c4cff;
-            --primary-hover: #5938e8;
-
-            --line: rgba(20, 20, 30, 0.09);
-
-            --header: rgba(255, 255, 255, 0.82);
-
-            --shadow: 0 20px 60px rgba(30, 30, 60, 0.08);
-
-            --radius: 22px;
-        }
-
-        html[data-theme="dark"] {
-            --bg: #08090d;
-            --surface: #11131a;
-            --surface-2: #181b24;
-
-            --text: #f4f5f7;
-            --muted: #a5a9b4;
-
-            --primary: #8b73ff;
-            --primary-hover: #a18eff;
-
-            --line: rgba(255, 255, 255, 0.09);
-
-            --header: rgba(8, 9, 13, 0.84);
-
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-        }
-
-        /* =========================
-           HEADER
-        ========================== */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            width: 100%;
-
-            background: var(--header);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-
-            border-bottom: 1px solid var(--line);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
-
-            height: 76px;
-
-            padding: 0 22px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            font-size: 19px;
-            font-weight: 800;
-            letter-spacing: -0.3px;
-        }
-
-        .brand img {
-            width: 40px;
-            height: 40px;
-
-            object-fit: contain;
-        }
-
-        .desktop-nav {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .desktop-nav a {
-            padding: 9px 13px;
-
-            color: var(--muted);
-
-            font-size: 14px;
-            font-weight: 600;
-
-            border-radius: 10px;
-
-            transition: 0.25s ease;
-        }
-
-        .desktop-nav a:hover {
-            color: var(--text);
-            background: var(--surface-2);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .theme-btn,
-        .menu-btn {
-            width: 40px;
-            height: 40px;
-
-            border: 1px solid var(--line);
-            border-radius: 12px;
-
-            background: var(--surface);
-
-            color: var(--text);
-
-            cursor: pointer;
-
-            display: grid;
-            place-items: center;
-
-            transition: 0.25s ease;
-        }
-
-        .theme-btn:hover,
-        .menu-btn:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-
-        .menu-btn {
-            display: none;
-        }
-
-        /* =========================
-           MOBILE MENU
-        ========================== */
-
-        .mobile-menu {
-            display: none;
-
-            padding: 10px 20px 20px;
-
-            border-top: 1px solid var(--line);
-        }
-
-        .mobile-menu a {
-            display: block;
-
-            padding: 13px 10px;
-
-            color: var(--muted);
-
-            border-radius: 10px;
-        }
-
-        .mobile-menu a:hover {
-            background: var(--surface-2);
-            color: var(--text);
-        }
-
-        /* =========================
-           GENERAL
-        ========================== */
-
-        .container {
-            width: min(1120px, calc(100% - 40px));
-            margin: auto;
-        }
-
-        section {
-            padding: 90px 0;
-        }
-
-        .section-head {
-            max-width: 680px;
-            margin-bottom: 45px;
-        }
-
-        .section-tag {
-            display: inline-flex;
-
-            padding: 7px 12px;
-
-            border-radius: 999px;
-
-            background: rgba(108, 76, 255, 0.10);
-            color: var(--primary);
-
-            font-size: 12px;
-            font-weight: 800;
-
-            text-transform: uppercase;
-            letter-spacing: 1px;
-
-            margin-bottom: 14px;
-        }
-
-        .section-head h2 {
-            font-size: clamp(30px, 5vw, 46px);
-            line-height: 1.1;
-
-            letter-spacing: -1.5px;
-
-            margin-bottom: 15px;
-        }
-
-        .section-head p {
-            color: var(--muted);
-            font-size: 16px;
-        }
-
-        /* =========================
-           HERO
-        ========================== */
-
-        .hero {
-            min-height: 650px;
-
-            display: flex;
-            align-items: center;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 500px;
-            height: 500px;
-
-            top: -150px;
-            right: -120px;
-
-            background: rgba(108, 76, 255, 0.15);
-
-            filter: blur(90px);
-            border-radius: 50%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-
-            max-width: 760px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            padding: 8px 13px;
-
-            border: 1px solid var(--line);
-            border-radius: 999px;
-
-            background: var(--surface);
-
-            color: var(--muted);
-
-            font-size: 13px;
-            font-weight: 600;
-
-            box-shadow: var(--shadow);
-
-            margin-bottom: 22px;
-        }
-
-        .hero-badge span {
-            width: 7px;
-            height: 7px;
-
-            background: #22c55e;
-
-            border-radius: 50%;
-        }
-
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 82px);
-            line-height: 0.98;
-
-            letter-spacing: -4px;
-
-            margin-bottom: 25px;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .hero p {
-            max-width: 650px;
-
-            color: var(--muted);
-
-            font-size: 18px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 12px;
-
-            margin-top: 32px;
-
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-
-            padding: 13px 19px;
-
-            border-radius: 13px;
-
-            font-size: 14px;
-            font-weight: 700;
-
-            border: 1px solid var(--line);
-
-            transition: 0.25s ease;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-
-            border-color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: var(--surface);
-        }
-
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-
-        /* =========================
-           ABOUT
-        ========================== */
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            gap: 25px;
-        }
-
-        .about-card {
-            background: var(--surface);
-
-            border: 1px solid var(--line);
-
-            border-radius: var(--radius);
-
-            padding: 30px;
-
-            box-shadow: var(--shadow);
-        }
-
-        .about-card i {
-            width: 48px;
-            height: 48px;
-
-            display: grid;
-            place-items: center;
-
-            background: rgba(108, 76, 255, 0.10);
-
-            color: var(--primary);
-
-            border-radius: 14px;
-
-            margin-bottom: 20px;
-        }
-
-        .about-card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .about-card p {
-            color: var(--muted);
-        }
-
-        /* =========================
-           SERVICES
-        ========================== */
-
-        .services-grid {
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 20px;
-        }
-
-        .service-card {
-            padding: 28px;
-
-            background: var(--surface);
-
-            border: 1px solid var(--line);
-
-            border-radius: var(--radius);
-
-            box-shadow: var(--shadow);
-
-            transition: 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(108, 76, 255, 0.35);
-        }
-
-        .service-icon {
-            width: 52px;
-            height: 52px;
-
-            display: grid;
-            place-items: center;
-
-            border-radius: 15px;
-
-            background: rgba(108, 76, 255, 0.10);
-
-            color: var(--primary);
-
-            font-size: 20px;
-
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 20px;
-            margin-bottom: 9px;
-        }
-
-        .service-card p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        /* =========================
-           APP STORE
-        ========================== */
-
-        .app-store-card {
-            display: grid;
-
-            grid-template-columns: 1fr auto;
-
-            align-items: center;
-
-            gap: 30px;
-
-            padding: 35px;
-
-            background: var(--surface);
-
-            border: 1px solid var(--line);
-
-            border-radius: 28px;
-
-            box-shadow: var(--shadow);
-
-            overflow: hidden;
-
-            position: relative;
-        }
-
-        .app-store-card::after {
-            content: "";
-
-            position: absolute;
-
-            width: 300px;
-            height: 300px;
-
-            right: -120px;
-            top: -120px;
-
-            background: rgba(108, 76, 255, 0.12);
-
-            filter: blur(70px);
-
-            border-radius: 50%;
-        }
-
-        .app-store-info {
-            position: relative;
-            z-index: 2;
-        }
-
-        .app-store-logo {
-            width: 85px;
-            height: 85px;
-
-            object-fit: contain;
-
-            margin-bottom: 18px;
-        }
-
-        .app-store-info h3 {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .app-store-info p {
-            color: var(--muted);
-            max-width: 600px;
-        }
-
-        .app-store-button {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* =========================
-           FOUNDER
-        ========================== */
-
-        .founder-card {
-            display: grid;
-
-            grid-template-columns: 110px 1fr auto;
-
-            align-items: center;
-
-            gap: 24px;
-
-            padding: 28px;
-
-            background: var(--surface);
-
-            border: 1px solid var(--line);
-
-            border-radius: var(--radius);
-
-            box-shadow: var(--shadow);
-        }
-
-        .avatar {
-            width: 110px;
-            height: 110px;
-
-            object-fit: cover;
-
-            border-radius: 25px;
-
-            background: var(--surface-2);
-
-            border: 1px solid var(--line);
-        }
-
-        .founder-card h3 {
-            font-size: 24px;
-            margin-bottom: 3px;
-        }
-
-        .founder-role {
-            color: var(--primary);
-
-            font-size: 14px;
-            font-weight: 700;
-
-            margin-bottom: 8px;
-        }
-
-        .founder-card p {
-            color: var(--muted);
-        }
-
-        .founder-link {
-            padding: 12px 15px;
-
-            border-radius: 12px;
-
-            background: var(--surface-2);
-
-            font-size: 13px;
-            font-weight: 700;
-
-            white-space: nowrap;
-
-            transition: 0.25s ease;
-        }
-
-        .founder-link:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* =========================
-           CONTACT
-        ========================== */
-
-        .contact-box {
-            padding: 40px;
-
-            background: var(--surface);
-
-            border: 1px solid var(--line);
-
-            border-radius: 28px;
-
-            box-shadow: var(--shadow);
-
-            text-align: center;
-        }
-
-        .contact-box h2 {
-            font-size: clamp(30px, 5vw, 46px);
-
-            letter-spacing: -1.5px;
-
-            margin-bottom: 13px;
-        }
-
-        .contact-box p {
-            color: var(--muted);
-
-            max-width: 620px;
-
-            margin: 0 auto 25px;
-        }
-
-        .contact-links {
-            display: flex;
-
-            justify-content: center;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-        }
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            padding: 11px 14px;
-
-            border: 1px solid var(--line);
-
-            border-radius: 12px;
-
-            background: var(--surface-2);
-
-            font-size: 13px;
-
-            transition: 0.25s ease;
-        }
-
-        .contact-link:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           FOOTER
-        ========================== */
-
-        footer {
-            border-top: 1px solid var(--line);
-
-            padding: 30px 0;
-
-            margin-top: 20px;
-        }
-
-        .footer-inner {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            gap: 20px;
-        }
-
-        .footer-copy {
-            color: var(--muted);
-
-            font-size: 13px;
-        }
-
-        .footer-links {
-            display: flex;
-
-            gap: 18px;
-
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--muted);
-
-            font-size: 13px;
-
-            transition: 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================== */
-
-        @media (max-width: 900px) {
-
-            .desktop-nav {
-                display: none;
-            }
-
-            .menu-btn {
-                display: grid;
-            }
-
-            .mobile-menu.active {
-                display: block;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .founder-card {
-                grid-template-columns: 90px 1fr;
-            }
-
-            .founder-link {
-                grid-column: 1 / -1;
-                justify-self: start;
-            }
-
-        }
-
-        @media (max-width: 650px) {
-
-            section {
-                padding: 70px 0;
-            }
-
-            .container {
-                width: min(100% - 28px, 1120px);
-            }
-
-            .nav-container {
-                height: 68px;
-                padding: 0 14px;
-            }
-
-            .brand {
-                font-size: 16px;
-            }
-
-            .brand img {
-                width: 35px;
-                height: 35px;
-            }
-
-            .hero {
-                min-height: 600px;
-            }
-
-            .hero h1 {
-                letter-spacing: -2.5px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .app-store-card {
-                grid-template-columns: 1fr;
-                padding: 27px;
-            }
-
-            .app-store-button {
-                justify-self: start;
-            }
-
-            .founder-card {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .avatar {
-                margin: auto;
-            }
-
-            .founder-link {
-                justify-self: center;
-            }
-
-            .contact-box {
-                padding: 30px 20px;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-links {
-                justify-content: center;
-            }
-        }
-
-        /* =========================
-           REVEAL
-        ========================== */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(25px);
-
-            transition:
-                opacity 0.7s ease,
-                transform 0.7s ease;
-        }
-
-        .reveal.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shoeb Technologies - Building the Future with Technology</title>
+
+  <meta
+    name="description"
+    content="Shoeb Technologies builds modern websites, Android applications and games."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --section: #f7f8fa;
+      --card: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: #e6e6e6;
+      --primary: #111111;
+      --shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b0b0d;
+      --section: #111114;
+      --card: #151519;
+      --text: #ffffff;
+      --muted: #a4a4aa;
+      --border: #29292f;
+      --primary: #ffffff;
+      --shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    [data-theme="dark"] header {
+      background: rgba(11, 11, 13, 0.88);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .theme-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(100, 100, 100, 0.07);
+      filter: blur(70px);
+      top: -220px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+      max-width: 900px;
+      margin: auto;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 28px auto 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-buttons {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 23px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--bg);
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.88;
+    }
+
+    .btn-secondary:hover {
+      background: var(--section);
+      transform: translateY(-2px);
+    }
+
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 70px;
+      color: var(--muted);
+    }
+
+    .hero-feature strong {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .hero-feature span {
+      font-size: 12px;
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================= */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-light {
+      background: var(--section);
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 55px;
+    }
+
+    .section-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 13px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 50px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 17px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-brand {
+      padding: 50px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .about-brand img {
+      width: 180px;
+      max-height: 70px;
+      object-fit: contain;
+      margin-bottom: 30px;
+    }
+
+    .about-brand h3 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .about-brand p {
+      color: var(--muted);
+    }
+
+    .about-text h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-number {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 35px;
+    }
+
+    .service-card h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       APP STORE
+    ========================= */
+
+    .appstore-box {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 55px;
+      background: var(--card);
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 50px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .appstore-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .appstore-logo img {
+      width: min(280px, 80%);
+      max-height: 100px;
+      object-fit: contain;
+    }
+
+    .appstore-content h2 {
+      font-size: clamp(30px, 4vw, 45px);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .appstore-content p {
+      color: var(--muted);
+      margin-bottom: 27px;
+    }
+
+    /* =========================
+       FOUNDER
+    ========================= */
+
+    .founder {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .founder-image {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .founder-image img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+    }
+
+    .founder-content h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .founder-content .role {
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .quote {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 25px 0;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta-box {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 75px 30px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: auto auto 30px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .contact-card p,
+    .contact-card a {
+      color: var(--muted);
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .social-links a {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 13px;
+      transition: 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--text);
+      background: var(--section);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 55px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 45px;
+    }
+
+    .footer-brand img {
+      width: 155px;
+      max-height: 55px;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      max-width: 350px;
+      font-size: 14px;
+    }
+
+    .footer-column h4 {
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .footer-column a:hover {
+      color: var(--text);
+    }
+
+    .copyright {
+      border-top: 1px solid var(--border);
+      padding-top: 22px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 90px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-features {
+        gap: 25px;
+        flex-direction: column;
+        margin-top: 55px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .about-grid,
+      .appstore-box,
+      .founder {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-image {
+        max-width: 300px;
+        margin: auto;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand img {
+        width: 36px;
+        height: 36px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .about-brand {
+        padding: 30px;
+      }
+
+      .appstore-box {
+        padding: 30px 22px;
+      }
+
+      .cta-box {
+        padding: 55px 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+    <div class="container nav">
+
+      <a href="#home" class="brand">
+        <img
+          src="STLightMod.svg"
+          alt="Shoeb Technologies"
+          id="brandLogo"
+        >
+        <span>Shoeb Technologies</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#app-store">App Store</a>
+        <a href="#founder">Founder</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button
+        class="theme-btn"
+        id="themeButton"
+        aria-label="Toggle theme"
+      >
+        ☾
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-content">
+
+        <span class="eyebrow">
+          Technology • Innovation • Digital
+        </span>
+
+        <h1>
+          Building the Future with Technology.
+        </h1>
+
+        <p>
+          Shoeb Technologies creates modern digital experiences
+          through web development, Android applications and games.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#services" class="btn btn-primary">
+            Explore Services
+          </a>
+
+          <a href="#contact" class="btn btn-secondary">
+            Get in Touch
+          </a>
+        </div>
+
+        <div class="hero-features">
+
+          <div class="hero-feature">
+            <strong>Modern Development</strong>
+            <span>Built with modern technologies</span>
+          </div>
+
+          <div class="hero-feature">
+            <strong>Built for the Future</strong>
+            <span>Practical digital experiences</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
     <!-- =========================
-         HEADER
+         ABOUT
     ========================== -->
 
-    <header>
+    <section id="about" class="section-light">
+      <div class="container">
 
-        <div class="nav-container">
+        <div class="section-heading">
+          <div class="section-label">About us</div>
 
-            <a href="#home" class="brand">
+          <h2>
+            Technology with a purpose.
+          </h2>
 
-                <picture>
-                    <source
-                        srcset="STDarkMod.svg"
-                        media="(prefers-color-scheme: dark)">
+          <p>
+            A modern technology company focused on creating
+            useful, reliable and engaging digital products.
+          </p>
+        </div>
 
-                    <img
-                        id="brandLogo"
-                        src="STLightMod.svg"
-                        alt="Shoeb Technologies">
-                </picture>
+        <div class="about-grid">
 
-                <span>Shoeb Technologies</span>
+          <div class="about-brand">
 
+            <img
+              src="STLightMod.svg"
+              alt="Shoeb Technologies"
+              class="theme-logo"
+            >
+
+            <h3>
+              Shoeb Technologies
+            </h3>
+
+            <p>
+              Building digital experiences that matter.
+            </p>
+
+          </div>
+
+          <div class="about-text">
+
+            <h2>
+              Creating useful digital experiences.
+            </h2>
+
+            <p>
+              Shoeb Technologies focuses on building practical
+              digital solutions for the modern world.
+            </p>
+
+            <p>
+              Our work includes modern websites, Android
+              applications and engaging games, with attention
+              to usability, reliability and performance.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section id="services">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">What we do</div>
+
+          <h2>
+            Our Services
+          </h2>
+
+          <p>
+            From concept to launch, we build digital solutions
+            around real-world needs.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div class="service-number">01</div>
+
+            <h3>
+              Web Development
+            </h3>
+
+            <p>
+              Modern, responsive and performance-focused
+              websites for businesses and digital products.
+            </p>
+          </div>
+
+
+          <div class="service-card">
+            <div class="service-number">02</div>
+
+            <h3>
+              Android App Development
+            </h3>
+
+            <p>
+              User-friendly Android applications designed
+              for smooth and practical mobile experiences.
+            </p>
+          </div>
+
+
+          <div class="service-card">
+            <div class="service-number">03</div>
+
+            <h3>
+              Game Development
+            </h3>
+
+            <p>
+              Engaging games with thoughtful gameplay,
+              responsive controls and memorable experiences.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         APP STORE
+    ========================== -->
+
+    <section id="app-store" class="section-light">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Our Platform</div>
+
+          <h2>
+            Shoeb App Store
+          </h2>
+
+          <p>
+            Discover apps and games through our dedicated
+            app store, powered by Shoeb Technologies.
+          </p>
+        </div>
+
+        <div class="appstore-box">
+
+          <div class="appstore-logo">
+
+            <picture>
+              <source
+                srcset="SASDarkMod.svg"
+                media="(prefers-color-scheme: dark)"
+              >
+
+              <img
+                src="SASLightMod.svg"
+                alt="Shoeb App Store"
+                id="appStoreLogo"
+              >
+            </picture>
+
+          </div>
+
+          <div class="appstore-content">
+
+            <h2>
+              Shoeb App Store
+            </h2>
+
+            <p>
+              Explore apps, games and digital products from
+              Shoeb Technologies in one dedicated platform.
+            </p>
+
+            <a
+              href="https://shoebapp.store"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              Visit App Store
             </a>
 
-            <nav class="desktop-nav">
-
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#app-store">App Store</a>
-                <a href="#founder">Founder</a>
-                <a href="#contact">Contact</a>
-
-            </nav>
-
-            <div class="nav-actions">
-
-                <button
-                    class="theme-btn"
-                    id="themeToggle"
-                    aria-label="Toggle theme">
-
-                    <i class="fa-solid fa-moon"></i>
-
-                </button>
-
-                <button
-                    class="menu-btn"
-                    id="menuToggle"
-                    aria-label="Open menu">
-
-                    <i class="fa-solid fa-bars"></i>
-
-                </button>
-
-            </div>
+          </div>
 
         </div>
 
-        <div class="mobile-menu" id="mobileMenu">
+      </div>
+    </section>
 
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#app-store">App Store</a>
-            <a href="#founder">Founder</a>
-            <a href="#contact">Contact</a>
+
+    <!-- =========================
+         FOUNDER
+    ========================== -->
+
+    <section id="founder">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Leadership</div>
+
+          <h2>
+            Meet the Founder
+          </h2>
 
         </div>
 
-    </header>
+        <div class="founder">
 
+          <div class="founder-image">
 
-    <!-- =========================
-         HERO
-    ========================== -->
+            <img
+              src="Shoeb.svg"
+              alt="Shoeb Khandaker"
+            >
 
-    <main>
+          </div>
 
-        <section class="hero" id="home">
+          <div class="founder-content">
 
-            <div class="container">
+            <h2>
+              Shoeb Khandaker
+            </h2>
 
-                <div class="hero-content reveal">
-
-                    <div class="hero-badge">
-                        <span></span>
-                        Technology & Innovation
-                    </div>
-
-                    <h1>
-                        Building the
-                        <span>Future</span>
-                        with Technology.
-                    </h1>
-
-                    <p>
-                        Shoeb Technologies creates modern digital
-                        experiences through websites, Android applications
-                        and games.
-                    </p>
-
-                    <div class="hero-buttons">
-
-                        <a href="#services" class="btn btn-primary">
-                            Explore Services
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-
-                        <a href="#contact" class="btn btn-secondary">
-                            Contact Us
-                        </a>
-
-                    </div>
-
-                </div>
-
+            <div class="role">
+              CEO & Founder<br>
+              CST Student<br>
+              Ahsanullah Institute Of Technology
             </div>
 
-        </section>
-
-
-        <!-- =========================
-             ABOUT
-        ========================== -->
-
-        <section id="about">
-
-            <div class="container">
-
-                <div class="section-head reveal">
-
-                    <span class="section-tag">
-                        About Us
-                    </span>
-
-                    <h2>
-                        Technology made simple,
-                        useful and meaningful.
-                    </h2>
-
-                    <p>
-                        Shoeb Technologies is a technology company focused
-                        on creating useful digital products and experiences
-                        for the modern world.
-                    </p>
-
-                </div>
-
-
-                <div class="about-grid">
-
-                    <article class="about-card reveal">
-
-                        <i class="fa-solid fa-lightbulb"></i>
-
-                        <h3>
-                            Innovation
-                        </h3>
-
-                        <p>
-                            We explore modern technologies and creative
-                            ideas to build digital solutions that are
-                            simple, practical and useful.
-                        </p>
-
-                    </article>
-
-
-                    <article class="about-card reveal">
-
-                        <i class="fa-solid fa-code"></i>
-
-                        <h3>
-                            Technology
-                        </h3>
-
-                        <p>
-                            From websites to mobile applications and games,
-                            we focus on building reliable digital
-                            experiences with modern technology.
-                        </p>
-
-                    </article>
-
-                </div>
-
+            <div class="quote">
+              “Never Give Up.”
             </div>
 
-        </section>
-
-
-        <!-- =========================
-             SERVICES
-        ========================== -->
-
-        <section id="services">
-
-            <div class="container">
-
-                <div class="section-head reveal">
-
-                    <span class="section-tag">
-                        Our Services
-                    </span>
-
-                    <h2>
-                        What we build.
-                    </h2>
-
-                    <p>
-                        We provide focused technology services for
-                        modern digital needs.
-                    </p>
-
-                </div>
-
-
-                <div class="services-grid">
-
-
-                    <!-- Web Development -->
-
-                    <article class="service-card reveal">
-
-                        <div class="service-icon">
-
-                            <i class="fa-solid fa-globe"></i>
-
-                        </div>
-
-                        <h3>
-                            Web Development
-                        </h3>
-
-                        <p>
-                            Modern, responsive and professional websites
-                            designed for businesses, organizations and
-                            personal projects.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Android -->
-
-                    <article class="service-card reveal">
-
-                        <div class="service-icon">
-
-                            <i class="fa-brands fa-android"></i>
-
-                        </div>
-
-                        <h3>
-                            Android App Development
-                        </h3>
-
-                        <p>
-                            User-friendly Android applications built
-                            with modern technologies and practical
-                            functionality.
-                        </p>
-
-                    </article>
-
-
-                    <!-- Game Development -->
-
-                    <article class="service-card reveal">
-
-                        <div class="service-icon">
-
-                            <i class="fa-solid fa-gamepad"></i>
-
-                        </div>
-
-                        <h3>
-                            Game Development
-                        </h3>
-
-                        <p>
-                            Creative and engaging games designed for
-                            enjoyable digital experiences across supported
-                            platforms.
-                        </p>
-
-                    </article>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             APP STORE
-        ========================== -->
-
-        <section id="app-store">
-
-            <div class="container">
-
-                <div class="section-head reveal">
-
-                    <span class="section-tag">
-                        Our Platform
-                    </span>
-
-                    <h2>
-                        Shoeb App Store
-                    </h2>
-
-                    <p>
-                        Discover applications and games from Shoeb
-                        Technologies through our dedicated app store.
-                    </p>
-
-                </div>
-
-
-                <div class="app-store-card reveal">
-
-                    <div class="app-store-info">
-
-                        <picture>
-
-                            <source
-                                srcset="SASDarkMod.svg"
-                                media="(prefers-color-scheme: dark)">
-
-                            <img
-                                id="appStoreLogo"
-                                class="app-store-logo"
-                                src="SASLightMod.svg"
-                                alt="Shoeb App Store">
-
-                        </picture>
-
-                        <h3>
-                            Shoeb App Store
-                        </h3>
-
-                        <p>
-                            A dedicated platform for discovering
-                            applications and games from Shoeb Technologies.
-                        </p>
-
-                    </div>
-
-
-                    <div class="app-store-button">
-
-                        <a
-                            href="https://shoebapp.store"
-                            target="_blank"
-                            rel="noopener"
-                            class="btn btn-primary">
-
-                            Visit App Store
-
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             FOUNDER
-        ========================== -->
-
-        <section id="founder">
-
-            <div class="container">
-
-                <div class="section-head reveal">
-
-                    <span class="section-tag">
-                        Founder
-                    </span>
-
-                    <h2>
-                        Meet the Founder.
-                    </h2>
-
-                </div>
-
-
-                <article class="founder-card reveal">
-
-                    <img
-                        class="avatar"
-                        src="Shoeb.svg"
-                        alt="Shoeb Khandaker">
-
-
-                    <div>
-
-                        <h3>
-                            Shoeb Khandaker
-                        </h3>
-
-                        <div class="founder-role">
-                            CEO & Founder
-                        </div>
-
-                        <p>
-                            CST Student<br>
-                            Ahsanullah Institute Of Technology
-                        </p>
-
-                        <p style="margin-top:7px;">
-                            “Never Give Up.”
-                        </p>
-
-                    </div>
-
-
-                    <a
-                        class="founder-link"
-                        href="https://shoeb-khandaker.github.io/web"
-                        target="_blank"
-                        rel="noopener">
-
-                        Visit Personal Website
-
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                    </a>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CONTACT
-        ========================== -->
-
-        <section id="contact">
-
-            <div class="container">
-
-                <div class="contact-box reveal">
-
-                    <span class="section-tag">
-                        Contact
-                    </span>
-
-                    <h2>
-                        Let's build something together.
-                    </h2>
-
-                    <p>
-                        Have an idea, project or technology requirement?
-                        Get in touch with Shoeb Technologies.
-                    </p>
-
-
-                    <div class="contact-links">
-
-                        <a
-                            class="contact-link"
-                            href="mailto:support@shoebapp.store">
-
-                            <i class="fa-solid fa-envelope"></i>
-
-                            support@shoebapp.store
-
-                        </a>
-
-
-                        <a
-                            class="contact-link"
-                            href="tel:+8809638854844">
-
-                            <i class="fa-solid fa-phone"></i>
-
-                            +880 9638-854844
-
-                        </a>
-
-
-                        <a
-                            class="contact-link"
-                            href="https://www.facebook.com/ShoebTech"
-                            target="_blank"
-                            rel="noopener">
-
-                            <i class="fa-brands fa-facebook"></i>
-
-                            Facebook
-
-                        </a>
-
-
-                        <a
-                            class="contact-link"
-                            href="https://www.instagram.com/shoeb.tech"
-                            target="_blank"
-                            rel="noopener">
-
-                            <i class="fa-brands fa-instagram"></i>
-
-                            Instagram
-
-                        </a>
-
-
-                        <a
-                            class="contact-link"
-                            href="https://x.com/ShoebTech"
-                            target="_blank"
-                            rel="noopener">
-
-                            <i class="fa-brands fa-x-twitter"></i>
-
-                            X
-
-                        </a>
-
-
-                        <a
-                            class="contact-link"
-                            href="https://github.com/shoeb-tech"
-                            target="_blank"
-                            rel="noopener">
-
-                            <i class="fa-brands fa-github"></i>
-
-                            GitHub
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="container">
-
-            <div class="footer-inner">
-
-                <div class="footer-copy">
-
-                  Copyright © 2026 Shoeb Technologies.
-                    All Rights Reserved.
-
-                </div>
-
-
-                <div class="footer-links">
-
-                    <a href="privacy.html">
-                        Privacy Policy
-                    </a>
-
-                    <a href="copyright.html">
-                        Copyright Policy
-                    </a>
-
-                </div>
-
-            </div>
+            <a
+              href="https://shoeb-khandaker.github.io/web"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+            >
+              Visit Personal Website
+            </a>
+
+          </div>
 
         </div>
 
-    </footer>
+      </div>
+    </section>
 
 
     <!-- =========================
-         JAVASCRIPT
+         CTA
     ========================== -->
 
-    <script>
+    <section class="section-light cta">
+      <div class="container">
 
-        /* =========================
-           THEME
-        ========================== */
+        <div class="cta-box">
 
-        const html = document.documentElement;
+          <h2>
+            Let’s build something great together.
+          </h2>
 
-        const themeToggle =
-            document.getElementById("themeToggle");
+          <p>
+            Have an idea, project or digital challenge?
+            Start a conversation with Shoeb Technologies.
+          </p>
 
-        const brandLogo =
-            document.getElementById("brandLogo");
+          <a
+            href="mailto:support@shoebapp.store"
+            class="btn btn-primary"
+          >
+            Contact Us
+          </a>
 
-        const appStoreLogo =
-            document.getElementById("appStoreLogo");
+        </div>
 
+      </div>
+    </section>
 
-        function setTheme(theme) {
 
-            html.setAttribute("data-theme", theme);
+    <!-- =========================
+         CONTACT
+    ========================== -->
 
-            localStorage.setItem(
-                "shoeb-theme",
-                theme
-            );
+    <section id="contact">
+      <div class="container">
 
+        <div class="section-heading">
+          <div class="section-label">Contact</div>
 
-            if (theme === "dark") {
+          <h2>
+            Let’s connect.
+          </h2>
 
-                themeToggle.innerHTML =
-                    '<i class="fa-solid fa-sun"></i>';
+          <p>
+            Reach Shoeb Technologies through email,
+            phone or social channels.
+          </p>
+        </div>
 
-                brandLogo.src =
-                    "STDarkMod.svg";
+        <div class="contact-grid">
 
-                appStoreLogo.src =
-                    "SASDarkMod.svg";
+          <div class="contact-card">
+            <h3>Email</h3>
 
-            } else {
+            <a href="mailto:support@shoebapp.store">
+              support@shoebapp.store
+            </a>
+          </div>
 
-                themeToggle.innerHTML =
-                    '<i class="fa-solid fa-moon"></i>';
 
-                brandLogo.src =
-                    "STLightMod.svg";
+          <div class="contact-card">
+            <h3>Phone</h3>
 
-                appStoreLogo.src =
-                    "SASLightMod.svg";
+            <a href="tel:+8809638854844">
+              +880 9638-854844
+            </a>
+          </div>
 
-            }
 
-        }
+          <div class="contact-card">
 
+            <h3>Social</h3>
 
-        const savedTheme =
-            localStorage.getItem("shoeb-theme");
+            <p>
+              Follow Shoeb Technologies online
+            </p>
 
+            <div class="social-links">
 
-        if (savedTheme) {
+              <a
+                href="https://www.facebook.com/ShoebTech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
 
-            setTheme(savedTheme);
+              <a
+                href="https://www.instagram.com/shoeb.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
 
-        } else {
+              <a
+                href="https://x.com/ShoebTech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                X
+              </a>
 
-            setTheme("light");
+              <a
+                href="https://github.com/shoeb-tech"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
 
-        }
+            </div>
 
+          </div>
 
-        themeToggle.addEventListener(
-            "click",
-            function () {
+        </div>
 
-                const current =
-                    html.getAttribute("data-theme");
+      </div>
+    </section>
 
-                setTheme(
-                    current === "dark"
-                        ? "light"
-                        : "dark"
-                );
+  </main>
 
-            }
-        );
 
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
-        /* =========================
-           MOBILE MENU
-        ========================== */
+  <footer>
 
-        const menuToggle =
-            document.getElementById("menuToggle");
+    <div class="container">
 
-        const mobileMenu =
-            document.getElementById("mobileMenu");
+      <div class="footer-grid">
 
+        <div class="footer-brand">
 
-        menuToggle.addEventListener(
-            "click",
-            function () {
+          <img
+            src="STLightMod.svg"
+            alt="Shoeb Technologies"
+            class="theme-logo"
+          >
 
-                mobileMenu.classList.toggle("active");
+          <p>
+            Building the Future with Technology.
+          </p>
 
-                const icon =
-                    menuToggle.querySelector("i");
+        </div>
 
-                if (
-                    mobileMenu.classList.contains("active")
-                ) {
 
-                    icon.className =
-                        "fa-solid fa-xmark";
+        <div class="footer-column">
 
-                } else {
+          <h4>Quick Links</h4>
 
-                    icon.className =
-                        "fa-solid fa-bars";
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#app-store">App Store</a>
+          <a href="#founder">Founder</a>
+          <a href="#contact">Contact</a>
 
-                }
+        </div>
 
-            }
-        );
 
+        <div class="footer-column">
 
-        document
-            .querySelectorAll(".mobile-menu a")
-            .forEach(function (link) {
+          <h4>Legal</h4>
 
-                link.addEventListener(
-                    "click",
-                    function () {
+          <a href="privacy.html">
+            Privacy Policy
+          </a>
 
-                        mobileMenu.classList.remove(
-                            "active"
-                        );
+          <a href="copyright.html">
+            Copyright Policy
+          </a>
 
-                        menuToggle.querySelector("i")
-                            .className =
-                            "fa-solid fa-bars";
+          <a
+            href="https://shoebapp.store"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Shoeb App Store
+          </a>
 
-                    }
-                );
+          <a href="mailto:support@shoebapp.store">
+            support@shoebapp.store
+          </a>
 
-            });
+        </div>
 
+      </div>
 
-        /* =========================
-           SCROLL REVEAL
-        ========================== */
 
-        const revealElements =
-            document.querySelectorAll(".reveal");
+      <div class="copyright">
+        Copyright © 2026 Shoeb Technologies.
+        All Rights Reserved.
+      </div>
 
+    </div>
 
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
+  </footer>
 
-                    entries.forEach(
-                        function (entry) {
 
-                            if (entry.isIntersecting) {
+  <script>
 
-                                entry.target.classList.add(
-                                    "show"
-                                );
+    const html = document.documentElement;
+    const themeButton = document.getElementById("themeButton");
 
-                                observer.unobserve(
-                                    entry.target
-                                );
+    const brandLogo = document.getElementById("brandLogo");
 
-                            }
+    const themeLogos =
+      document.querySelectorAll(".theme-logo");
 
-                        }
-                    );
 
-                },
-                {
-                    threshold: 0.12
-                }
-            );
+    function setTheme(theme) {
 
+      html.setAttribute("data-theme", theme);
 
-        revealElements.forEach(
-            function (element) {
+      localStorage.setItem("shoebTheme", theme);
 
-                observer.observe(element);
+      if (theme === "dark") {
 
-            }
-        );
+        themeButton.textContent = "☀";
 
-    </script>
+        brandLogo.src = "STDarkMod.svg";
+
+        themeLogos.forEach(function(logo) {
+          logo.src = "STDarkMod.svg";
+        });
+
+      } else {
+
+        themeButton.textContent = "☾";
+
+        brandLogo.src = "STLightMod.svg";
+
+        themeLogos.forEach(function(logo) {
+          logo.src = "STLightMod.svg";
+        });
+
+      }
+
+    }
+
+
+    const savedTheme =
+      localStorage.getItem("shoebTheme") || "light";
+
+    setTheme(savedTheme);
+
+
+    themeButton.addEventListener("click", function() {
+
+      const currentTheme =
+        html.getAttribute("data-theme");
+
+      const newTheme =
+        currentTheme === "dark"
+          ? "light"
+          : "dark";
+
+      setTheme(newTheme);
+
+    });
+
+  </script>
 
 </body>
-
 </html>
