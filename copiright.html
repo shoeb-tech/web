@@ -1,351 +1,287 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <title>Copyright Policy - Shoeb Technologies</title>
+  <title>Copyright Policy - Shoeb Technologies</title>
 
-    <meta name="description"
-        content="Copyright Policy of Shoeb Technologies.">
+  <meta
+    name="description"
+    content="Copyright Policy of Shoeb Technologies."
+  >
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-    <style>
+  <style>
 
-        :root {
-            --bg: #f7f8fc;
-            --surface: #ffffff;
-            --text: #15171c;
-            --muted: #686d78;
-            --primary: #6c4cff;
-            --line: rgba(20,20,30,.09);
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        html[data-theme="dark"] {
-            --bg: #08090d;
-            --surface: #11131a;
-            --text: #f4f5f7;
-            --muted: #a5a9b4;
-            --primary: #8b73ff;
-            --line: rgba(255,255,255,.09);
-        }
+    body {
+      font-family: "Inter", sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.75;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    .container {
+      width: min(900px, 92%);
+      margin: auto;
+    }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.75;
-        }
+    header {
+      border-bottom: 1px solid #e6e6e6;
+      padding: 20px 0;
+    }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
 
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
 
-            background: rgba(255,255,255,.8);
-            backdrop-filter: blur(15px);
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
 
-            border-bottom: 1px solid var(--line);
-        }
+    .back {
+      color: #666;
+      font-size: 14px;
+    }
 
-        html[data-theme="dark"] header {
-            background: rgba(8,9,13,.8);
-        }
+    .back:hover {
+      color: #111;
+    }
 
-        .nav {
-            max-width: 1000px;
-            margin: auto;
+    main {
+      padding: 80px 0;
+    }
 
-            height: 70px;
+    h1 {
+      font-size: clamp(38px, 6vw, 60px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
 
-            padding: 0 20px;
+    .updated {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 55px;
+    }
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    h2 {
+      font-size: 24px;
+      margin: 38px 0 12px;
+    }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+    p {
+      color: #555;
+      margin-bottom: 18px;
+    }
 
-            font-weight: 800;
-        }
+    a {
+      color: inherit;
+    }
 
-        .brand img {
-            width: 38px;
-            height: 38px;
-        }
+    footer {
+      border-top: 1px solid #e6e6e6;
+      padding: 25px 0;
+      color: #777;
+      font-size: 13px;
+      text-align: center;
+    }
 
-        .back {
-            color: var(--primary);
-            font-size: 14px;
-            font-weight: 700;
-        }
+    @media (max-width: 600px) {
 
-        main {
-            max-width: 900px;
-            margin: auto;
+      main {
+        padding: 55px 0;
+      }
 
-            padding: 70px 20px;
-        }
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-        .badge {
-            display: inline-block;
+    }
 
-            padding: 7px 12px;
-
-            border-radius: 999px;
-
-            background: rgba(108,76,255,.10);
-
-            color: var(--primary);
-
-            font-size: 12px;
-            font-weight: 800;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: clamp(38px, 7vw, 60px);
-
-            line-height: 1.05;
-
-            letter-spacing: -2px;
-
-            margin-bottom: 12px;
-        }
-
-        .updated {
-            color: var(--muted);
-
-            font-size: 14px;
-
-            margin-bottom: 45px;
-        }
-
-        article {
-            background: var(--surface);
-
-            border: 1px solid var(--line);
-
-            border-radius: 22px;
-
-            padding: 30px;
-
-            margin-bottom: 18px;
-        }
-
-        h2 {
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: var(--muted);
-            margin-bottom: 12px;
-        }
-
-        ul {
-            color: var(--muted);
-            padding-left: 22px;
-        }
-
-        li {
-            margin-bottom: 7px;
-        }
-
-        footer {
-            max-width: 900px;
-            margin: auto;
-
-            padding: 25px 20px 40px;
-
-            border-top: 1px solid var(--line);
-
-            color: var(--muted);
-
-            font-size: 13px;
-
-            text-align: center;
-        }
-
-    </style>
+  </style>
 
 </head>
 
+
 <body>
 
-    <header>
+  <header>
 
-        <div class="nav">
+    <div class="container header-inner">
 
-            <a href="index.html" class="brand">
+      <a href="index.html" class="brand">
 
-                <img
-                    src="STLightMod.svg"
-                    alt="Shoeb Technologies">
+        <img
+          src="STLightMod.svg"
+          alt="Shoeb Technologies"
+        >
 
-                <span>Shoeb Technologies</span>
+        <span>Shoeb Technologies</span>
 
-            </a>
+      </a>
 
-            <a href="index.html" class="back">
+      <a href="index.html" class="back">
+        ← Back to Home
+      </a>
 
-                <i class="fa-solid fa-arrow-left"></i>
+    </div>
 
-                Back to Home
-
-            </a>
-
-        </div>
-
-    </header>
+  </header>
 
 
-    <main>
+  <main>
 
-        <span class="badge">
-            Legal
-        </span>
+    <div class="container">
 
-        <h1>
-            Copyright Policy
-        </h1>
+      <h1>
+        Copyright Policy
+      </h1>
 
-        <p class="updated">
-            Last Updated: September 2026
-        </p>
+      <div class="updated">
+        Last updated: 2026
+      </div>
 
 
-        <article>
-
-            <h2>
-                1. Copyright Ownership
-            </h2>
-
-            <p>
-                Unless otherwise stated, the original content, branding,
-                graphics, designs, text, software and other materials
-                created by Shoeb Technologies are protected by applicable
-                copyright laws.
-            </p>
-
-        </article>
+      <p>
+        This policy describes ownership and permitted use
+        of content published on the Shoeb Technologies
+        website.
+      </p>
 
 
-        <article>
+      <h2>
+        1. Ownership
+      </h2>
 
-            <h2>
-                2. Use of Content
-            </h2>
-
-            <p>
-                Content from this website should not be copied,
-                reproduced, modified, redistributed or commercially
-                exploited without appropriate permission.
-            </p>
-
-        </article>
+      <p>
+        Unless otherwise stated, the website's original text,
+        graphics, logos, visual design, code and other
+        original materials are the property of Shoeb
+        Technologies and are protected by applicable
+        copyright and intellectual-property laws.
+      </p>
 
 
-        <article>
+      <h2>
+        2. Permitted Use
+      </h2>
 
-            <h2>
-                3. Trademarks and Branding
-            </h2>
+      <p>
+        You may view and use the website for lawful personal
+        or informational purposes.
+      </p>
 
-            <p>
-                The name Shoeb Technologies, its logos, branding elements
-                and related visual identities may not be used in a way
-                that suggests unauthorized affiliation or endorsement.
-            </p>
-
-        </article>
-
-
-        <article>
-
-            <h2>
-                4. Third-Party Content
-            </h2>
-
-            <p>
-                Some content or resources may belong to third parties.
-                Such content remains subject to the rights and terms of
-                its respective owners.
-            </p>
-
-        </article>
+      <p>
+        You may not reproduce, republish, distribute,
+        modify, sell or commercially exploit our original
+        materials without prior written permission.
+      </p>
 
 
-        <article>
+      <h2>
+        3. Logo and Brand
+      </h2>
 
-            <h2>
-                5. Copyright Inquiries
-            </h2>
-
-            <p>
-                If you believe that copyrighted material has been used
-                improperly on our website, please contact us with
-                sufficient information regarding the material and the
-                relevant rights.
-            </p>
-
-            <p>
-                <strong>
-                    support@shoebapp.store
-                </strong>
-            </p>
-
-        </article>
+      <p>
+        “Shoeb Technologies” and its logos are brand assets
+        of Shoeb Technologies. They may not be copied,
+        altered or presented as belonging to another
+        organization without permission.
+      </p>
 
 
-        <article>
+      <h2>
+        4. Third-Party Materials
+      </h2>
 
-            <h2>
-                6. Contact
-            </h2>
-
-            <p>
-                For copyright-related questions, please contact
-                Shoeb Technologies at the email address above.
-            </p>
-
-        </article>
-
-    </main>
+      <p>
+        Some third-party libraries, fonts, icons or linked
+        services may be governed by their own licenses and
+        terms. Those materials remain subject to their
+        respective owners' rights.
+      </p>
 
 
-    <footer>
+      <h2>
+        5. Copyright Concerns
+      </h2>
+
+      <p>
+        If you believe that material on this website
+        infringes your copyright, please provide a clear
+        description of the copyrighted work, the material
+        you believe is infringing, and sufficient contact
+        information so we can review the concern.
+      </p>
+
+
+      <h2>
+        6. Contact
+      </h2>
+
+      <p>
+        Copyright-related requests can be sent to
+        <a href="mailto:support@shoebapp.store">
+          support@shoebapp.store
+        </a>.
+      </p>
+
+
+      <h2>
+        7. Changes
+      </h2>
+
+      <p>
+        Shoeb Technologies may update this policy when
+        necessary. The latest version will be published
+        on this page.
+      </p>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    <div class="container">
 
       Copyright © 2026 Shoeb Technologies.
-        All Rights Reserved.
+      All Rights Reserved.
 
-    </footer>
+    </div>
+
+  </footer>
 
 </body>
 
