@@ -1014,6 +1014,7 @@
   <div class="container nav-wrap">
 
     <a class="brand" href="#home">
+      <!-- Main Logo -->
       <img
         id="siteLogo"
         src="STDarkMod.svg"
@@ -1275,6 +1276,7 @@
 
       <div class="appstore-logo-wrap">
 
+        <!-- App Store Logo -->
         <img
           id="appStoreLogo"
           class="appstore-logo"
@@ -1624,6 +1626,7 @@
 
     <div class="footer-brand">
 
+      <!-- Footer Logo -->
       <img
         id="footerLogo"
         src="STDarkMod.svg"
@@ -1736,26 +1739,46 @@
 
 <script>
 
-  const root =
-    document.documentElement;
+  const root = document.documentElement;
 
-  const themeToggle =
-    document.getElementById('themeToggle');
+  const themeToggle = document.getElementById('themeToggle');
 
-  const menuToggle =
-    document.getElementById('menuToggle');
-
-  const mobileMenu =
-    document.getElementById('mobileMenu');
+  const siteLogo = document.getElementById('siteLogo');
+  const appStoreLogo = document.getElementById('appStoreLogo');
+  const footerLogo = document.getElementById('footerLogo');
 
 
+  function updateLogos() {
 
-  /* THEME TOGGLE */
+    const isDark =
+      root.getAttribute('data-theme') === 'dark';
 
+
+    if (isDark) {
+
+      // Dark Mode Logos
+      siteLogo.src = "STDarkMod.svg";
+      appStoreLogo.src = "SASDarkMod.svg";
+      footerLogo.src = "STDarkMod.svg";
+
+    } else {
+
+      // Light Mode Logos
+      siteLogo.src = "STLightMod.svg";
+      appStoreLogo.src = "SASLightMod.svg";
+      footerLogo.src = "STLightMod.svg";
+
+    }
+
+  }
+
+
+  // Theme Toggle
   themeToggle.addEventListener('click', () => {
 
     const isDark =
       root.getAttribute('data-theme') === 'dark';
+
 
     root.setAttribute(
       'data-theme',
@@ -1768,11 +1791,24 @@
       ? '<i class="fa-solid fa-moon"></i>'
       : '<i class="fa-solid fa-sun"></i>';
 
+
+    // Change all logos
+    updateLogos();
+
   });
 
 
+  // Set correct logos when page loads
+  updateLogos();
 
-  /* MOBILE MENU */
+
+  // Mobile Menu
+  const menuToggle =
+    document.getElementById('menuToggle');
+
+  const mobileMenu =
+    document.getElementById('mobileMenu');
+
 
   menuToggle.addEventListener('click', () => {
 
@@ -1781,9 +1817,7 @@
   });
 
 
-
-  /* CLOSE MOBILE MENU AFTER CLICK */
-
+  // Close mobile menu after click
   mobileMenu.querySelectorAll('a').forEach(link => {
 
     link.addEventListener('click', () => {
